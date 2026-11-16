@@ -56,7 +56,7 @@ void SymbolsRenderer::DrawSettings()
         if (result) {
             color_quest = 0xFF22EF22;
             color_quest_line = 0xFF22EF22;
-            color_other_quests = 0x00006400;
+            color_other_quests = 0xDCE6B43C;
             color_north = 0xFFFF8000;
             color_modifier = 0x001E1E1E;
             Invalidate();
@@ -72,7 +72,7 @@ void SymbolsRenderer::DrawSettings()
         Invalidate();
     }
     ImGui::ShowHelp("Quest markers that are not the active quest will be shown in this colour.\n"
-        "If this colour has an alpha of 0, the inactive quest markers will all have random colours.");
+        "Set it to transparent to hide them.");
     if (Colors::DrawSettingHueWheel("North marker", &color_north)) {
         Invalidate();
     }

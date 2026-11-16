@@ -184,7 +184,7 @@ namespace {
         PriceCheckerModule::Instance(),
         ItemTooltipModule::Instance(),
         ResignLogModule::Instance(),
-        {PathfindingWindow::Instance(), false},
+        PathfindingWindow::Instance(),
         QuestModule::Instance(),
 #ifdef _DEBUG
         TestHarness::Instance(),

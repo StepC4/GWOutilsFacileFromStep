@@ -786,9 +786,7 @@ void QuestModule::DrawSettingsInternal()
         recalc_quest_paths |= ImGui::Checkbox("Minimap##minimapquestpath", &settings.draw_quest_path_on_minimap);
         recalc_quest_paths |= ImGui::Checkbox("Mission Map##missionmapquestpath", &settings.draw_quest_path_on_mission_map);
         ImGui::Checkbox("World Map##worldmapquestpath", &WorldMapWidget::ShowLinesOnWorldMap());
-#ifdef _DEBUG
-        recalc_quest_paths |= ImGui::Checkbox("Show paths to all quests##drawallquestpaths", &settings.show_paths_to_all_quests);
-#endif
+        recalc_quest_paths |= ImGui::Checkbox("Tracer le chemin vers toutes mes quêtes##drawallquestpaths", &settings.show_paths_to_all_quests);
         if (recalc_quest_paths) RefreshAllQuestPaths();
     }
     else {

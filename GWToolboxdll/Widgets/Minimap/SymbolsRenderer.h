@@ -20,7 +20,7 @@ private:
     void Initialize(IDirect3DDevice9* device) override;
     Color color_quest = 0xFF22EF22;
     Color color_quest_line = 0xFF22EF22;
-    Color color_other_quests = 0x00006400;
+    Color color_other_quests = 0xDCE6B43C;
     Color color_north = 0xFFFF8000;
     Color color_modifier = 0x001E1E1E;
 

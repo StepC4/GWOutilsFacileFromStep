@@ -30,6 +30,7 @@ namespace {
         {"Materials", "Matériaux"},
         {"Notepad", "Bloc-notes"},
         {"Dialogs", "Dialogues"},
+        {"Pathfinding", "Chemins"},
         {"Settings", "Réglages"}
     };
 
@@ -42,7 +43,7 @@ namespace {
         {"Voyage & Builds", {"Travel", "Builds", "Hero Builds"}},
         {"Combat", {"Pcons", "Hotkeys", "Minimap", "Damage", "Bonds", "Health"}},
         {"Suivi", {"Timer", "Objectives", "Vanquish", "Daily Quests"}},
-        {"Outils", {"Materials", "Notepad", "Dialogs", "Settings"}}
+        {"Outils", {"Materials", "Notepad", "Pathfinding", "Dialogs", "Settings"}}
     };
 
     const char* DisplayLabel(const char* name)
@@ -210,6 +211,22 @@ void MainWindow::DrawTileGrid()
         draw_section(category.title, in_category);
     }
     draw_section("Autres", remaining);
+
+    if (DrawTile(ICON_FA_DOOR_OPEN, "Quitter", false)) {
+        ImGui::OpenPopup("##confirm_quit");
+    }
+    if (ImGui::BeginPopup("##confirm_quit")) {
+        ImGui::TextUnformatted("Fermer GWOutilsFacile ?");
+        if (ImGui::Button("Oui, quitter")) {
+            GWToolbox::SignalTerminate();
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("Non")) {
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::EndPopup();
+    }
 }
 
 void MainWindow::DrawClassicList()
@@ -242,7 +259,12 @@ void MainWindow::Draw(IDirect3DDevice9*)
     }
     static bool open = true;
     ImGui::SetNextWindowSize(settings.big_tiles ? ImVec2(440.0f, 460.0f) : ImVec2(110.0f, 300.0f), ImGuiCond_FirstUseEver);
-    if (ImGui::Begin(Name(), show_closebutton ? &open : nullptr, GetWinFlags())) {
+    const bool expanded = ImGui::Begin(Name(), show_closebutton ? &open : nullptr, GetWinFlags());
+    if (!open && settings.big_tiles) {
+        ImGui::SetWindowCollapsed(true);
+        open = true;
+    }
+    if (expanded) {
         if (settings.big_tiles) {
             DrawTileGrid();
         }

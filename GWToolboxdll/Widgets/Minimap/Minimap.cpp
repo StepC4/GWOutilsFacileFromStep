@@ -126,7 +126,7 @@ namespace {
     bool hide_compass_drawings = false;
     bool hide_compass_pings = false;
     bool hide_compass_quest_marker = false;
-    bool render_all_quests = false;
+    bool render_all_quests = true;
 
     bool in_interface_settings = false;
 
@@ -1053,7 +1053,7 @@ void Minimap::DrawSettingsInternal()
         pending_refresh_quest_marker = true;
     }
     ImGui::ShowHelp("To disable the toolbox minimap quest marker, set the quest marker color to transparent in the Symbols section below.");
-    ImGui::CheckboxWithHelp("Draw all quest markers", &render_all_quests, "Draw quest markers for all quests in your quest log, not just the active quest");
+    ImGui::CheckboxWithHelp("Afficher toutes mes quêtes", &render_all_quests, "Affiche sur la minimap les marqueurs de toutes les quêtes du journal, pas seulement la quête active.\nLa quête active est en vert, les autres en doré.");
 
     ImGui::CheckboxWithHelp("Hide GW compass drawings", &hide_compass_drawings, "Drawings made by other players will be visible on the minimap, but not the compass");
     ImGui::CheckboxWithHelp("Hide GW compass pings", &hide_compass_pings, "Pings made by other players will be visible on the minimap, but not the compass");
@@ -1450,7 +1450,6 @@ bool Minimap::ShouldMarkersDrawOnMap()
 
 bool Minimap::ShouldDrawAllQuests()
 {
-    // NB: Drawing all quest markers is unstable; there are a bunch of times when the quest marker is stale and we don't know about it. Disable unless debug.
     return render_all_quests;
 }
 
