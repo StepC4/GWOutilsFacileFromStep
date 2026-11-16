@@ -32,6 +32,7 @@ on:
     branches:
       - dev
     paths: *cmake-paths
+  workflow_dispatch:
 
 # Cancel a still-running build for the same ref when a new commit supersedes
 # it, instead of letting both run to completion on the paid Windows runner.
