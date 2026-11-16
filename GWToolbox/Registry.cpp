@@ -3,7 +3,7 @@
 #include "Registry.h"
 
 namespace {
-    const auto lpSubKey = L"Software\\GWToolbox";
+    const auto lpSubKey = L"Software\\GWOutilsFacile";
 }
 
 bool RegReadDWORD(const LPCWSTR KeyName, const PDWORD Value, std::wstring& error)

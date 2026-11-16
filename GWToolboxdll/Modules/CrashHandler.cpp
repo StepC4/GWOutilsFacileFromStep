@@ -48,7 +48,7 @@ namespace {
     std::wstring ResolveCrashFolder()
     {
         std::filesystem::path folder;
-        if (!PathGetDocumentsPath(folder, L"GWToolboxpp"))
+        if (!PathGetDocumentsPath(folder, L"GWOutilsFacile"))
             return L"";
         if (std::filesystem::path computer; PathGetComputerName(computer))
             folder /= computer;
@@ -289,7 +289,7 @@ LONG WINAPI CrashHandler::Crash(EXCEPTION_POINTERS* pExceptionPointers, const ch
         }
         std::wstring error =
             L"Guild Wars crashed, and GWToolbox crashed again while trying to write the crash dump.\n\n"
-            L"This almost always means something is blocking your Documents\\GWToolboxpp folder - "
+            L"This almost always means something is blocking your Documents\\GWOutilsFacile folder - "
             L"usually Windows Defender Controlled Folder Access or antivirus.\n\n"
             L"Allow Guild Wars through Controlled Folder Access, or add an exclusion for your "
             L"GWToolbox folder, then try again.";

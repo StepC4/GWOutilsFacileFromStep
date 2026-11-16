@@ -82,7 +82,7 @@ static bool ParseReleases(const std::string& content, std::vector<Release>& rele
 static bool DownloadReleases(std::vector<Release>& releases)
 {
     std::string content;
-    if (!Download(content, "https://api.github.com/repos/gwdevhub/GWToolboxpp/releases?per_page=30")) return false;
+    if (!Download(content, "https://api.github.com/repos/StepC4/GWOutilsFacileFromStep/releases?per_page=30")) return false;
     return ParseReleases(content, releases);
 }
 
@@ -607,7 +607,7 @@ void UpdateChecker::Start(const bool check_exe, const bool check_dll)
     m_CheckExe = check_exe;
     m_CheckDll = check_dll;
 
-    m_ReleasesFetch.SetUrl("https://api.github.com/repos/gwdevhub/GWToolboxpp/releases?per_page=30");
+    m_ReleasesFetch.SetUrl("https://api.github.com/repos/StepC4/GWOutilsFacileFromStep/releases?per_page=30");
     m_ReleasesFetch.SetFollowLocation(true);
     m_ReleasesFetch.SetVerifyPeer(true);
     m_ReleasesFetch.SetTimeoutSec(10);

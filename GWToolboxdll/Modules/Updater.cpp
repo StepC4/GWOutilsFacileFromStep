@@ -129,7 +129,7 @@ namespace {
     {
         std::string response;
         unsigned int tries = 0;
-        const auto url = "https://api.github.com/repos/gwdevhub/GWToolboxpp/releases";
+        const auto url = "https://api.github.com/repos/StepC4/GWOutilsFacileFromStep/releases";
         bool success = false;
         do {
             success = Resources::Instance().Download(url, response);
@@ -292,7 +292,7 @@ namespace {
             }
             ImGui::Spacing();
             if (ImGui::Button("Star us on GitHub###gwtoolbox_open_star", ImVec2(200.0f * ImGui::FontScale(), 0))) {
-                ShellExecute(nullptr, "open", "https://github.com/gwdevhub/GWToolboxpp", nullptr, nullptr, SW_SHOWNORMAL);
+                ShellExecute(nullptr, "open", "https://github.com/StepC4/GWOutilsFacileFromStep", nullptr, nullptr, SW_SHOWNORMAL);
                 show_star_request = false;
             }
             ImGui::SameLine();

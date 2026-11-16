@@ -532,7 +532,7 @@ std::filesystem::path Resources::GetComputerFolderPath()
     ASSERT(PathGetComputerName(computer_name));
 
     std::filesystem::path docpath;
-    ASSERT(PathGetDocumentsPath(docpath, L"GWToolboxpp"));
+    ASSERT(PathGetDocumentsPath(docpath, L"GWOutilsFacile"));
     docpath = docpath / computer_name;
 
     ASSERT(PathCreateDirectorySafe(docpath));

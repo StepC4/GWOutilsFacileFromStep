@@ -42,7 +42,7 @@ bool GetFileSize(const wchar_t* path, uint64_t* file_size)
 fs::path GetInstallationDir()
 {
     std::filesystem::path docpath;
-    if (!PathGetDocumentsPath(docpath, L"GWToolboxpp")) {
+    if (!PathGetDocumentsPath(docpath, L"GWOutilsFacile")) {
         return {};
     }
     std::filesystem::path computer_name;
@@ -128,7 +128,7 @@ bool Install(const bool quiet, std::wstring& error)
 
     // Grant the exclusion and Controlled Folder Access permissions before writing into Documents, so CFA can't block the install.
     fs::path docs_dir;
-    if (PathGetDocumentsPath(docs_dir, L"GWToolboxpp")) {
+    if (PathGetDocumentsPath(docs_dir, L"GWOutilsFacile")) {
         std::vector<fs::path> cfa_apps = GetGuildWarsExecutablePaths();
         fs::path running_exe;
         if (PathGetExeFullPath(running_exe))
