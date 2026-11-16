@@ -172,11 +172,11 @@ namespace {
         PartyWindowModule::Instance(),
         //HeroPanelPositionModule::Instance(),
         ToastNotifications::Instance(),
-        DiscordModule::Instance(),
-        TwitchModule::Instance(),
-        TeamspeakModule::Instance(),
-        Teamspeak5Module::Instance(),
-        ObserverModule::Instance(),
+        {DiscordModule::Instance(), false}, // GWOutils: off by default
+        {TwitchModule::Instance(), false}, // GWOutils: off by default
+        {TeamspeakModule::Instance(), false}, // GWOutils: off by default
+        {Teamspeak5Module::Instance(), false}, // GWOutils: off by default
+        {ObserverModule::Instance(), false}, // GWOutils: off by default
         HintsModule::Instance(),
         MouseFix::Instance(),
         KeyboardLanguageFix::Instance(),
@@ -184,24 +184,24 @@ namespace {
         PriceCheckerModule::Instance(),
         ItemTooltipModule::Instance(),
         ResignLogModule::Instance(),
-        PathfindingWindow::Instance(),
+        {PathfindingWindow::Instance(), false}, // GWOutils: off by default
         QuestModule::Instance(),
 #ifdef _DEBUG
         TestHarness::Instance(),
 #endif
         VanquishMapOverlayWidget::Instance(),
-        PartyBroadcast::Instance(),
+        {PartyBroadcast::Instance(), false}, // GWOutils: off by default
         CodeOptimiserModule::Instance(),
 #if 0
         ExtraWeaponSets::Instance(),
 #endif
         {TextToSpeechModule::Instance(), false},
         FpsFix::Instance(),
-        GamepadModule::Instance(),
-        CameraUnlockModule::Instance(),
+        {GamepadModule::Instance(), false}, // GWOutils: off by default
+        {CameraUnlockModule::Instance(), false}, // GWOutils: off by default
         TimerWidget::Instance(),
         HealthWidget::Instance(),
-        SkillbarWidget::Instance(),
+        {SkillbarWidget::Instance(), false}, // GWOutils: off by default
         {DistanceWidget::Instance(), false},
         Minimap::Instance(),
         GameWorldRenderer::Instance(),
@@ -212,59 +212,59 @@ namespace {
 #ifdef _DEBUG
         {RiverModule::Instance(), false},
 #endif
-        CartographerWidget::Instance(),
+        {CartographerWidget::Instance(), false}, // GWOutils: off by default
         PartyDamage::Instance(),
         BondsWidget::Instance(),
-        ClockWidget::Instance(),
+        {ClockWidget::Instance(), false}, // GWOutils: off by default
         VanquishWidget::Instance(),
-        ExploitableCorpseWidget::Instance(),
-        AlcoholWidget::Instance(),
-        WorldMapWidget::Instance(),
-        EffectsMonitorWidget::Instance(),
-        LatencyWidget::Instance(),
-        SkillMonitorWidget::Instance(),
-        MissionMapWidget::Instance(),
+        {ExploitableCorpseWidget::Instance(), false}, // GWOutils: off by default
+        {AlcoholWidget::Instance(), false}, // GWOutils: off by default
+        {WorldMapWidget::Instance(), false}, // GWOutils: off by default
+        {EffectsMonitorWidget::Instance(), false}, // GWOutils: off by default
+        {LatencyWidget::Instance(), false}, // GWOutils: off by default
+        {SkillMonitorWidget::Instance(), false}, // GWOutils: off by default
+        {MissionMapWidget::Instance(), false}, // GWOutils: off by default
 #if _DEBUG
         InventoryOverlayWidget::Instance(),
 #endif
-        ActiveQuestWidget::Instance(),
-        TitleTrackerWidget::Instance(),
-        BountyKillTrackerWidget::Instance(),
+        {ActiveQuestWidget::Instance(), false}, // GWOutils: off by default
+        {TitleTrackerWidget::Instance(), false}, // GWOutils: off by default
+        {BountyKillTrackerWidget::Instance(), false}, // GWOutils: off by default
         PconsWindow::Instance(),
         HotkeysWindow::Instance(),
         BuildsWindow::Instance(),
         HeroBuildsWindow::Instance(),
         TravelWindow::Instance(),
-        InfoWindow::Instance(),
+        {InfoWindow::Instance(), false}, // GWOutils: off by default
         MaterialsWindow::Instance(),
-        TradeWindow::Instance(),
+        {TradeWindow::Instance(), false}, // GWOutils: off by default
         NotePadWindow::Instance(),
         ObjectiveTimerWindow::Instance(),
-        FactionLeaderboardWindow::Instance(),
+        {FactionLeaderboardWindow::Instance(), false}, // GWOutils: off by default
         DailyQuests::Instance(),
-        FriendListWindow::Instance(),
-        ObserverPlayerWindow::Instance(),
-        ObserverTargetWindow::Instance(),
-        ObserverPartyWindow::Instance(),
-        ObserverExportWindow::Instance(),
-        CompletionWindow::Instance(),
-        RerollWindow::Instance(),
-        PartyStatisticsWindow::Instance(),
-        DupingWindow::Instance(),
-        ArmoryWindow::Instance(),
-        EnemyWindow::Instance(),
-        TargetInfoWindow::Instance(),
-        DropTrackerWindow::Instance(),
-        GWMarketWindow::Instance(),
+        {FriendListWindow::Instance(), false}, // GWOutils: off by default
+        {ObserverPlayerWindow::Instance(), false}, // GWOutils: off by default
+        {ObserverTargetWindow::Instance(), false}, // GWOutils: off by default
+        {ObserverPartyWindow::Instance(), false}, // GWOutils: off by default
+        {ObserverExportWindow::Instance(), false}, // GWOutils: off by default
+        {CompletionWindow::Instance(), false}, // GWOutils: off by default
+        {RerollWindow::Instance(), false}, // GWOutils: off by default
+        {PartyStatisticsWindow::Instance(), false}, // GWOutils: off by default
+        {DupingWindow::Instance(), false}, // GWOutils: off by default
+        {ArmoryWindow::Instance(), false}, // GWOutils: off by default
+        {EnemyWindow::Instance(), false}, // GWOutils: off by default
+        {TargetInfoWindow::Instance(), false}, // GWOutils: off by default
+        {DropTrackerWindow::Instance(), false}, // GWOutils: off by default
+        {GWMarketWindow::Instance(), false}, // GWOutils: off by default
         InventorySorting::Instance(),
 #ifdef _DEBUG
         {PlaystyleRestrictionsWindow::Instance(), false},
 #endif
-        FavorTracker::Instance(),
+        {FavorTracker::Instance(), false}, // GWOutils: off by default
         LoginModule::Instance(),
         {AccountInventoryWindow::Instance(), false},
         {PerformanceWindow::Instance(), false},
-        TexmodModule::Instance(),
+        {TexmodModule::Instance(), false}, // GWOutils: off by default
         {SplashScreenModule::Instance(), false}
     };
 
