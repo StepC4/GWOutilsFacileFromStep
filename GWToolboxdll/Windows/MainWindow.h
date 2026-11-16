@@ -26,6 +26,7 @@ public:
         bool one_panel_at_time_only = false;
         bool show_icons = true;
         bool center_align_text = false;
+        bool big_tiles = true;
     };
 
     // Draw user interface. Will be called every frame if the element is visible
@@ -42,6 +43,10 @@ public:
     bool pending_refresh_buttons = true;
 
 private:
+    void DrawTileGrid();
+    void DrawClassicList();
+    void OnModuleToggled(const ToolboxUIElement* toggled);
+
     float GetModuleWeighting(const ToolboxUIElement* m) const
     {
         const auto found = module_weightings.find(m->Name());

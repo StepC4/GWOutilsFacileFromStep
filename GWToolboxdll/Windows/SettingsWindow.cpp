@@ -381,7 +381,7 @@ void SettingsWindow::Draw(IDirect3DDevice9*)
     if (ImGui::Begin(Name(), GetVisiblePtr(), GetWinFlags())) {
         drawn_settings.clear();
         ImGui::SetNextItemWidth(-1.f);
-        const bool enter_pressed = ImGui::InputTextWithHint("##settings_search", ICON_FA_SEARCH "  Search settings...", search_buf, sizeof(search_buf), ImGuiInputTextFlags_EnterReturnsTrue);
+        const bool enter_pressed = ImGui::InputTextWithHint("##settings_search", ICON_FA_SEARCH "  Rechercher un réglage...", search_buf, sizeof(search_buf), ImGuiInputTextFlags_EnterReturnsTrue);
         if (search_buf[0] && ImGui::IsKeyPressed(ImGuiKey_Escape)) {
             search_buf[0] = 0;
         }
@@ -394,7 +394,7 @@ void SettingsWindow::Draw(IDirect3DDevice9*)
         }
         const ImColor sCol(102, 187, 238, 255);
         ImGui::PushTextWrapPos();
-        ImGui::Text("GWToolbox++");
+        ImGui::Text("GWOutilsFacile");
         ImGui::SameLine(0, 0);
         ImGui::TextColored(sCol, " v%s ", GWTOOLBOXDLL_VERSION);
         if (ImGui::IsItemHovered()) {
@@ -412,10 +412,10 @@ void SettingsWindow::Draw(IDirect3DDevice9*)
             if (!server_version.empty()) {
                 if (server_version == GWTOOLBOXDLL_VERSION) {
                     ImGui::SameLine();
-                    ImGui::Text("(Up to date)");
+                    ImGui::Text("(À jour)");
                 }
                 else {
-                    ImGui::Text("Version %s is available!", server_version.c_str());
+                    ImGui::Text("La version %s est disponible !", server_version.c_str());
                 }
             }
         }
@@ -428,21 +428,26 @@ void SettingsWindow::Draw(IDirect3DDevice9*)
         ImGui::Text("(Clang)");
 #endif
         const float w = (ImGui::GetContentRegionAvail().x - ImGui::GetStyle().ItemSpacing.x) / 2;
-        if (ImGui::Button("Open current settings folder", ImVec2(w, 0))) {
+        if (ImGui::Button("Ouvrir le dossier des réglages", ImVec2(w, 0))) {
             ShellExecuteW(nullptr, L"open", Resources::GetSettingsFolderPath().c_str(), nullptr, nullptr, SW_SHOWNORMAL);
         }
         ImGui::SameLine();
-        if (ImGui::Button("Open GWToolbox++ Website", ImVec2(w, 0))) {
-            ShellExecuteA(nullptr, "open", GWTOOLBOX_WEBSITE, nullptr, nullptr, SW_SHOWNORMAL);
+        if (ImGui::Button(show_advanced ? "Masquer les réglages avancés" : "Afficher les réglages avancés", ImVec2(w, 0))) {
+            show_advanced = !show_advanced;
         }
-        ImGui::Checkbox("Hide Settings when entering explorable area", &hide_when_entering_explorable);
-        ImGui::CheckboxWithHelp("Send anonymous gameplay stats", &ToolboxSettings::send_anonymous_gameplay_info, "Some features of toolbox allow you to contribute to the community\nby sending in-game data to remote websites.\
+        ImGui::Checkbox("Cacher les réglages en entrant dans une zone explorable", &hide_when_entering_explorable);
+        if (show_advanced) {
+            if (ImGui::Button("Ouvrir le site GWToolbox++", ImVec2(w, 0))) {
+                ShellExecuteA(nullptr, "open", GWTOOLBOX_WEBSITE, nullptr, nullptr, SW_SHOWNORMAL);
+            }
+            ImGui::CheckboxWithHelp("Envoyer des statistiques de jeu anonymes", &ToolboxSettings::send_anonymous_gameplay_info, "Some features of toolbox allow you to contribute to the community\nby sending in-game data to remote websites.\
         \n\nFeatures that use this info:\
         \n\t- Sending outpost party information to https://party.gwtoolbox.com\
         \n\t- Sending purchase analytics to https://gwmarket.net when whispering a seller/buyer from the Market Browser");
-        ImGui::Text("General:");
+        }
+        ImGui::Text("Général :");
 
-        if (ImGui::CollapsingHeader("Help")) {
+        if (ImGui::CollapsingHeader("Aide")) {
             if (ImGui::TreeNodeEx("General Interface", ImGuiTreeNodeFlags_FramePadding | ImGuiTreeNodeFlags_SpanAvailWidth)) {
                 ImGui::Bullet();
                 ImGui::Text("Double-click on the title bar to collapse a window.");
@@ -551,32 +556,34 @@ void SettingsWindow::Draw(IDirect3DDevice9*)
         };
 
         sync_sections(modules, GWToolbox::GetModules());
-        draw_sections(modules);
+        if (show_advanced) {
+            draw_sections(modules);
+        }
 
         sync_sections(windows, GWToolbox::GetWindows());
         if (!windows.source.empty()) {
-            ImGui::Text("Windows:");
+            ImGui::Text("Fenêtres :");
         }
         draw_sections(windows);
 
         sync_sections(widgets, GWToolbox::GetWidgets());
         if (!widgets.source.empty()) {
-            ImGui::Text("Widgets:");
+            ImGui::Text("Widgets :");
         }
         draw_sections(widgets);
 
-        if (ImGui::Button("Save Now", ImVec2(w, 0))) {
+        if (ImGui::Button("Sauvegarder maintenant", ImVec2(w, 0))) {
             GWToolbox::SaveSettings();
         }
         if (ImGui::IsItemHovered()) {
-            ImGui::SetTooltip("Toolbox normally saves settings on exit.\nClick to save to disk now.");
+            ImGui::SetTooltip("Les réglages sont sauvegardés automatiquement en quittant.\nClique pour les sauvegarder tout de suite.");
         }
         ImGui::SameLine();
-        if (ImGui::Button("Load Now", ImVec2(w, 0))) {
+        if (ImGui::Button("Recharger", ImVec2(w, 0))) {
             GWToolbox::LoadSettings();
         }
         if (ImGui::IsItemHovered()) {
-            ImGui::SetTooltip("Toolbox normally loads settings on launch.\nClick to re-load from disk now.");
+            ImGui::SetTooltip("Les réglages sont chargés au lancement.\nClique pour les recharger depuis le disque.");
         }
         ImGui::PopTextWrapPos();
     }

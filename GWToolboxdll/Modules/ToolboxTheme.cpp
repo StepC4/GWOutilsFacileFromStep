@@ -131,30 +131,44 @@ ToolboxTheme::ToolboxTheme()
 ImGuiStyle ToolboxTheme::DefaultTheme()
 {
     auto style = ImGuiStyle();
-    style.WindowBorderSize = 0.f;
-    style.WindowRounding = 6.0f;
-    style.FrameRounding = 2.0f;
+    style.WindowBorderSize = 1.0f;
+    style.WindowRounding = 8.0f;
+    style.ChildRounding = 6.0f;
+    style.PopupRounding = 6.0f;
+    style.FrameRounding = 5.0f;
     style.ScrollbarSize = 16.0f;
-    style.ScrollbarRounding = 4.0f;
+    style.ScrollbarRounding = 6.0f;
     style.GrabMinSize = 17.0f;
-    style.GrabRounding = 2.0f;
-    // fixme: rewrite the colors to remove the need for SwapRB
-    style.Colors[ImGuiCol_WindowBg] = ImColor(0xD0000000);
-    style.Colors[ImGuiCol_TitleBg] = ImColor(0xD7282828);
-    style.Colors[ImGuiCol_TitleBgCollapsed] = ImColor(0x82282828);
-    style.Colors[ImGuiCol_TitleBgActive] = ImColor(0xFF282828);
-    style.Colors[ImGuiCol_MenuBarBg] = ImColor(0xFF000000);
-    style.Colors[ImGuiCol_ScrollbarBg] = ImColor(0xCC141414);
-    style.Colors[ImGuiCol_ScrollbarGrab] = ImColor(0xB3424954);
-    style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImColor(0xFF424954);
-    style.Colors[ImGuiCol_ScrollbarGrabActive] = ImColor(0xFF565D68);
-    style.Colors[ImGuiCol_SliderGrabActive] = ImColor(0xFFC8C8FF);
-    style.Colors[ImGuiCol_Button] = ImColor(0x99344870);
-    style.Colors[ImGuiCol_ButtonHovered] = ImColor(0xFF344870);
-    style.Colors[ImGuiCol_ButtonActive] = ImColor(0xFF283C68);
-    style.Colors[ImGuiCol_Header] = ImColor(0x73E62800);
-    style.Colors[ImGuiCol_HeaderHovered] = ImColor(0xCCF03200);
-    style.Colors[ImGuiCol_HeaderActive] = ImColor(0xCCFA3C00);
+    style.GrabRounding = 4.0f;
+    style.WindowPadding = ImVec2(12.0f, 12.0f);
+    style.FramePadding = ImVec2(8.0f, 5.0f);
+    style.ItemSpacing = ImVec2(8.0f, 6.0f);
+    style.Colors[ImGuiCol_Text] = ImColor(235, 225, 205, 255);
+    style.Colors[ImGuiCol_TextDisabled] = ImColor(140, 130, 115, 255);
+    style.Colors[ImGuiCol_WindowBg] = ImColor(20, 16, 12, 235);
+    style.Colors[ImGuiCol_PopupBg] = ImColor(24, 19, 14, 245);
+    style.Colors[ImGuiCol_Border] = ImColor(150, 115, 60, 160);
+    style.Colors[ImGuiCol_FrameBg] = ImColor(40, 32, 24, 200);
+    style.Colors[ImGuiCol_FrameBgHovered] = ImColor(60, 48, 34, 220);
+    style.Colors[ImGuiCol_FrameBgActive] = ImColor(75, 60, 40, 240);
+    style.Colors[ImGuiCol_TitleBg] = ImColor(45, 34, 22, 230);
+    style.Colors[ImGuiCol_TitleBgCollapsed] = ImColor(45, 34, 22, 130);
+    style.Colors[ImGuiCol_TitleBgActive] = ImColor(70, 52, 30, 255);
+    style.Colors[ImGuiCol_MenuBarBg] = ImColor(30, 24, 18, 255);
+    style.Colors[ImGuiCol_ScrollbarBg] = ImColor(20, 16, 12, 180);
+    style.Colors[ImGuiCol_ScrollbarGrab] = ImColor(90, 70, 45, 200);
+    style.Colors[ImGuiCol_ScrollbarGrabHovered] = ImColor(120, 92, 55, 255);
+    style.Colors[ImGuiCol_ScrollbarGrabActive] = ImColor(150, 115, 65, 255);
+    style.Colors[ImGuiCol_CheckMark] = ImColor(230, 190, 100, 255);
+    style.Colors[ImGuiCol_SliderGrab] = ImColor(200, 155, 80, 255);
+    style.Colors[ImGuiCol_SliderGrabActive] = ImColor(230, 190, 100, 255);
+    style.Colors[ImGuiCol_Button] = ImColor(110, 80, 40, 200);
+    style.Colors[ImGuiCol_ButtonHovered] = ImColor(150, 110, 55, 255);
+    style.Colors[ImGuiCol_ButtonActive] = ImColor(180, 135, 65, 255);
+    style.Colors[ImGuiCol_Header] = ImColor(120, 88, 45, 150);
+    style.Colors[ImGuiCol_HeaderHovered] = ImColor(155, 115, 60, 200);
+    style.Colors[ImGuiCol_HeaderActive] = ImColor(180, 135, 65, 230);
+    style.Colors[ImGuiCol_Separator] = ImColor(120, 95, 55, 150);
     return style;
 }
 
